@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 
 from distutils.core import setup
+from setuptools import find_packages
+
+PACKAGES = find_packages()
 
 setup(name='Contentious',
       version='1.0',
@@ -8,5 +11,6 @@ setup(name='Contentious',
       author='Adam Alton - Potato London Ltd',
       author_email='adam@potatolondon.com',
       url='https://github.com/potatolondon/contentious',
-      packages=['contentious'],
+      packages=PACKAGES,
+      include_package_data=True,
      )
