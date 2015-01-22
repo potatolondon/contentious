@@ -1,8 +1,7 @@
 from django.conf import settings
 
 
-SELF_CLOSING_HTML_TAGS = getattr(settings,
-    'CONTENTIOUS_SELF_CLOSING_HTML_TAGS', ['img', 'br', 'hr', 'meta'])
+SELF_CLOSING_HTML_TAGS = ['img', 'br', 'hr', 'meta']
 
 
 #Note, the Javascript plugin has its own seprate copy of this:
