@@ -79,3 +79,25 @@ MyContentious.prototype.closeDialog = function(){
 var cts = new MyContentious();
 ```
 
+## Dealing with HTML content
+You can define the content of specific tags to be treated as HTML. 
+This means Contentious will **not** escape the content before rendering. Also the editor dialogue will display it verbatim inside a textarea (useful if you wish to add the WYSIWYG of your choice for example). You may customize which tags are treated this way by populating the `treatContentAsHTML` option when instantiating the Contentious javascript class.
+
+```
+function MyContentious(){}
+MyContentious.prototype = new Contentious({
+    ...
+    'treatContentAsHTML': ['div', 'p']
+})
+
+var ctx = new MyContentious();
+```
+
+You **must** also mirror this on the Python side by setting the `CONTENTIOUS_TREAT_CONTENT_AS_HTML_TAGS` option in your Django settings file.
+
+```
+...
+CONTENTIOUS_TREAT_CONTENT_AS_HTML_TAGS = ('div', 'p')
+...
+```
+
