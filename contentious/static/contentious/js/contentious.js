@@ -406,7 +406,7 @@ var Contentious = (function(){
 	klass.prototype.centralise = function(element, container){
 		var $container = $(container),
 			$element = $(element),
-			containerOffset = $container.position();
+			containerOffset = $container.offset();
 		$element.css('top', containerOffset.top + ($container.outerHeight(true)/2 - $element.height()/2));
 		$element.css('left', containerOffset.left + ($container.outerWidth(true)/2 - $element.width()/2));
 	};
