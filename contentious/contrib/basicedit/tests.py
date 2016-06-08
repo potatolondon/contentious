@@ -1,11 +1,11 @@
 #LIBRARIES
 from django.core.cache import cache
 from django.http import HttpRequest
-from django.template import RequestContext
 from django.test import TestCase
 from django.test.utils import override_settings
 
 #CONTENTIOUS
+from contentious.compat import get_request_context
 from .api import BasicEditAPI
 
 
@@ -20,7 +20,7 @@ class APITest(TestCase):
         api = BasicEditAPI()
         request = HttpRequest()
         request.path = '/test_view/'
-        context = RequestContext(request)
+        context = get_request_context(request)
         #First test that trying to get content for something that hasn't been saved returns {}
         result = api.get_content_data('some_key', context)
         self.assertEqual(result, {})
@@ -35,7 +35,7 @@ class APITest(TestCase):
         cache.clear()
         request = HttpRequest()
         request.path = '/test_view/'
-        context = RequestContext(request)
+        context = get_request_context(request)
         result = api.get_content_data('some_key', context)
         self.assertIsSubDict(data, result)
 
